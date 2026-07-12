@@ -1,0 +1,49 @@
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:8px;
+
+border-bottom:1px solid #e5e7eb;
+
+}
+
+.header h2{
+
+font-size:22px;
+
+margin-bottom:4px;
+
+}
+
+.header p{
+
+color:#6b7280;
+
+font-size:14px;
+
+}
+
+.header button{
+position:absolute;
+height:55px;
+width: 50px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:black;
+background:#2563eb;
+font-size:28px;
+top:10px;
+right:0px;
+cursor:pointer;
+}
+.header button:hover{
+    background:#fee2e2;
+    color:#dc2626;
+    transform:translateY(-2px);
+} 

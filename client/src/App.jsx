@@ -1,12 +1,146 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+import MainLayout from "./layouts/MainLayout";
+
+import Home from "./pages/Home";
+import Auctions from "./pages/Auctions";
+import AuctionDetails from "./pages/AuctionDetails";
+import Dashboard from "./pages/Dashboard";
+import SellerDashboard from "./pages/SellerDashboard";
+import Profile from "./pages/Profile";
+import Watchlist from "./pages/Watchlist";
+import Settings from "./pages/Settings";
+import CreateAuction from "./pages/CreateAuction";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import VerifyOTP from "./pages/VerifyOTP";
+import ResetPassword from "./pages/ResetPassword";
+
+// Uncomment after creating the page
+// import AdminDashboard from "./pages/AdminDashboard";
+
+import ProtectedRoute from "./components/common/ProtectedRoute";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+
+      {/* ================= PUBLIC LAYOUT ================= */}
+
+      <Route element={<MainLayout />}>
+
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/auctions"
+          element={<Auctions />}
+        />
+
+        <Route
+          path="/auctions/:id"
+          element={<AuctionDetails />}
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/seller-dashboard"
+          element={
+            <ProtectedRoute role="seller">
+              <SellerDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/watchlist"
+          element={
+            <ProtectedRoute>
+              <Watchlist />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/create-auction"
+          element={
+            <ProtectedRoute role="seller">
+              <CreateAuction />
+            </ProtectedRoute>
+          }
+        />
+           {/* ================= AUTH PAGES ================= */}
+
+      <Route
+        path="/login"
+        element={<Login />}
+      />
+
+      <Route
+        path="/register"
+        element={<Register />}
+      />
+
+      <Route
+        path="/forgot-password"
+        element={<ForgotPassword />}
+      />
+
+      <Route
+        path="/verify-otp"
+        element={<VerifyOTP />}
+      />
+
+      <Route
+        path="/reset-password"
+        element={<ResetPassword />}
+      />
+      
+      </Route>
+
+     
+
+      {/* ================= ADMIN ================= */}
+
+      {/*
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute role="admin">
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      */}
+
+    </Routes>
   );
 }
 

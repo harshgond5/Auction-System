@@ -1,0 +1,6 @@
+Use these dummy credentials:
+
+Role	Email	Password
+Buyer	buyer@auctionhub.com	Buyer@123
+Seller	seller@auctionhub.com	Seller@123
+Admin (if implemented)	admin@auctionhub.com	Admin@123

@@ -1,0 +1,70 @@
+.social{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    margin-top:10px;
+}
+
+.title{
+    font-size:.9rem;
+    font-weight:500;
+    color:#6b7280;
+}
+
+.icons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+}
+
+.icon{
+
+    /* width:52px;
+    height:52px; */
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:1px solid #e5e7eb;
+    border-radius:50%;
+    background:#fff;
+    color:#4b5563;
+    cursor:pointer;
+
+}
+.icon svg{
+    width:18px;
+    height:38px;
+}
+
+.icon:hover{
+
+    background-Color:#2417171c;
+    color:#241717e5;
+    transform:translateY(0%) scale(1.1);
+    /* transform:translateY(-4px);
+    background-color:#2564eb4b;
+    border-color:#2563eb;
+
+    color:#2564eb01;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.18); */
+
+}
+
+.icon:active{
+
+    transform:scale(.96);
+
+}
+
+.icon:focus-visible{
+
+    outline:3px solid rgba(37,99,235,.2);
+
+    outline-offset:3px;
+
+}

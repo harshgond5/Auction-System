@@ -1,0 +1,60 @@
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.row h4 {
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.row span {
+  color: #6b7280;
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.live {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.endingsoon {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.sold {
+  background: #dbeafe;
+  color: #2563eb;
+}

@@ -1,0 +1,157 @@
+.container{
+    flex:1;
+    overflow:auto;
+    padding:25px;
+}
+
+.priceCard{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:white;
+    border-radius:18px;
+    padding:24px;
+    text-align:center;
+}
+
+.priceCard small{
+    opacity:.9;
+}
+
+.priceCard h1{
+    font-size:42px;
+    margin:12px 0;
+}
+
+.priceCard span{
+    font-size:14px;
+}
+
+.timer{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:25px 0;
+}
+
+.timer div{
+    background:#f8fafc;
+    border:2px solid #e5e7eb;
+    border-radius:14px;
+    padding:16px;
+    text-align:center;
+}
+
+.timer strong{
+    display:block;
+    font-size:28px;
+}
+
+.timer span{
+    color:#64748b;
+    font-size:13px;
+}
+
+.inputSection{
+    margin-bottom:25px;
+}
+
+.inputSection label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.inputSection input{
+    width:100%;
+    padding:15px;
+    font-size:22px;
+    border:2px solid #111827;
+    border-radius:12px;
+}
+
+.inputSection input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+.quickButtons{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:30px;
+}
+
+.quickButtons button{
+    border:none;
+    background:#eff6ff;
+    color:#2563eb;
+    padding:14px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.quickButtons button:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.summary{
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.summary div{
+    display:flex;
+    justify-content:space-between;
+}
+
+.infoBox{
+    margin-top:25px;
+    background:#ecfdf5;
+    border:1px solid #bbf7d0;
+    color:#166534;
+    padding:18px;
+    border-radius:14px;
+    line-height:1.5;
+}
+
+.footer{
+    border-top:1px solid #e5e7eb;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.place{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:16px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+
+.place:hover{
+    background:#1d4ed8;
+}
+
+.details{
+    background:white;
+    border:2px solid #2563eb;
+    color:#2563eb;
+    padding:15px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.details:hover{
+    background:#eff6ff;
+}

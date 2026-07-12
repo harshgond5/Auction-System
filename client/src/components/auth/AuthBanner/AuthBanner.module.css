@@ -1,0 +1,358 @@
+.banner{
+    position:relative;
+    overflow:hidden;
+
+    width:100%;
+    height:100%;
+
+    padding:32px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:#fff;
+}
+
+/* ===========================
+   BACKGROUND EFFECTS
+=========================== */
+
+.bgGlow1{
+    position:absolute;
+    width:500px;
+    height:500px;
+
+    top:-220px;
+    left:-180px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(255,255,255,.22),
+        transparent 70%
+    );
+
+    filter:blur(40px);
+}
+
+.bgGlow2{
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    right:-150px;
+    bottom:-150px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(0,255,255,.18),
+        transparent 70%
+    );
+
+    filter:blur(50px);
+}
+
+.lines{
+    position:absolute;
+    inset:0;
+
+    background:
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,.05) 0px,
+        rgba(255,255,255,.05) 1px,
+        transparent 1px,
+        transparent 55px
+    );
+
+    opacity:.4;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.logo,
+.hero,
+.pills,
+.card{
+    position:relative;
+    z-index:2;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:1.15rem;
+    font-weight:700;
+}
+
+.logoBox{
+    width:36px;
+    height:36px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.18);
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+    margin-top:40px;
+}
+
+.hero h1{
+    font-size:clamp(2rem,3vw,2.8rem);
+
+    line-height:1.15;
+
+    font-weight:800;
+
+    margin-bottom:14px;
+
+    letter-spacing:-1px;
+}
+
+.hero p{
+    max-width:400px;
+
+    font-size:.95rem;
+
+    line-height:1.6;
+
+    color:rgba(255,255,255,.92);
+}
+
+/* ===========================
+   FEATURE PILLS
+=========================== */
+
+.pills{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-top:40px;
+}
+
+.pills div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.14);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+}
+
+.pills div:hover{
+
+    transform:translateY(-4px);
+
+    background:rgba(255,255,255,.22);
+
+}
+
+.pills svg{
+
+    font-size:20px;
+
+}
+
+/* ===========================
+   TESTIMONIAL CARD
+=========================== */
+
+.card{
+
+    margin-top:auto;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    max-width:480px;
+
+    transition:.35s;
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.avatar{
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:22px;
+    font-weight:700;
+
+    background:white;
+    color:#2563eb;
+
+    flex-shrink:0;
+}
+
+.card h3{
+
+    font-size:1rem;
+
+    margin-bottom:4px;
+}
+
+.card span{
+
+    color:rgba(255,255,255,.8);
+
+    font-size:.9rem;
+}
+
+.card p{
+
+    margin-top:12px;
+
+    font-size:.95rem;
+
+    line-height:1.7;
+
+    color:rgba(255,255,255,.95);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:1000px){
+
+.banner{
+
+    padding:40px 30px;
+
+    min-height:420px;
+
+}
+
+.hero h1{
+
+    font-size:2.6rem;
+
+}
+
+.hero p{
+
+    font-size:1rem;
+
+}
+
+.card{
+
+    max-width:100%;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.banner{
+
+    padding:30px 22px;
+
+}
+
+.hero{
+
+    margin-top:25px;
+
+}
+
+.hero h1{
+
+    font-size:2rem;
+
+}
+
+.hero p{
+
+    font-size:.95rem;
+
+}
+
+.pills{
+
+    gap:10px;
+
+}
+
+.pills div{
+
+    padding:10px 14px;
+
+    font-size:.85rem;
+
+}
+
+.card{
+
+    padding:18px;
+
+}
+
+.avatar{
+
+    width:48px;
+    height:48px;
+
+    font-size:18px;
+
+}
+
+}

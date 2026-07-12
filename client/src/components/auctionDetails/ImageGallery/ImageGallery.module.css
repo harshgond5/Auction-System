@@ -1,0 +1,31 @@
+.gallery{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.mainImage{
+width:100%;
+height:500px;
+object-fit:cover;
+border-radius:20px;
+}
+
+.thumbnails{
+display:flex;
+gap:12px;
+}
+
+.thumbnails img{
+width:100px;
+height:80px;
+object-fit:cover;
+border-radius:12px;
+cursor:pointer;
+border:2px solid transparent;
+transition:.3s;
+}
+
+.thumbnails img:hover{
+border-color:#2563eb;
+}

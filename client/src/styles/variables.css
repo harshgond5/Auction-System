@@ -1,0 +1,49 @@
+:root {
+
+  /* ========= COLORS ========= */
+
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #3b82f6;
+
+  --secondary: #0f172a;
+
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-light: #f1f5f9;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-light: #64748b;
+
+  --border: #e2e8f0;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* ========= SHADOW ========= */
+
+  --shadow-sm: 0 4px 10px rgba(15,23,42,.05);
+
+  --shadow-md: 0 10px 25px rgba(15,23,42,.08);
+
+  --shadow-lg: 0 20px 45px rgba(15,23,42,.12);
+
+  /* ========= BORDER ========= */
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+
+  /* ========= CONTAINER ========= */
+
+  --container-width: 1280px;
+
+  --navbar-height: 80px;
+
+  /* ========= TRANSITIONS ========= */
+
+  --transition: .25s ease;
+
+}
