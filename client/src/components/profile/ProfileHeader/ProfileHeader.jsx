@@ -3,7 +3,7 @@ import { profiles } from "../../../data/profileData";
 
 import styles from "./ProfileHeader.module.css";
 const profileData = profiles.seller;
-export default function ProfileHeader() {
+export default function ProfileHeader({ onEdit }) {
   return (
     <div className={styles.card}>
       <div className={styles.left}>
@@ -32,7 +32,9 @@ export default function ProfileHeader() {
         </div>
       </div>
 
-      <button>Edit Profile</button>
+      <button onClick={onEdit}>
+        Edit Profile
+      </button>
     </div>
   );
 }

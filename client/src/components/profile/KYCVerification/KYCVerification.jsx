@@ -1,118 +1,159 @@
-import { useState } from "react";
-import styles from "./KYCVerification.module.css";
+import { useAuth } from "../../../context/AuthContext";
 
-export default function KYCVerification() {
-  const [documents, setDocuments] = useState({
-    aadhaar: true,
-    pan: true,
-    selfie: false,
-  });
+import {
+  FaCheckCircle,
+  FaTimesCircle,
+  FaIdCard,
+  FaEnvelope,
+  FaPhone,
+  FaUniversity,
+  FaShieldAlt,
+} from "react-icons/fa";
 
-  const completed = Object.values(documents).filter(Boolean).length;
-  const progress = Math.round((completed / 3) * 100);
+import styles from "./KycVerification.module.css";
 
-  const cards = [
+export default function KycVerification() {
+
+  const { user } = useAuth();
+
+  const checks = [
     {
-      key: "aadhaar",
-      title: "Aadhaar Card",
-      status: documents.aadhaar,
-      description: "Government Identity Verification",
+      icon: <FaEnvelope />,
+      label: "Email Verification",
+      verified: true,
     },
     {
-      key: "pan",
-      title: "PAN Card",
-      status: documents.pan,
-      description: "Tax Identity Verification",
+      icon: <FaPhone />,
+      label: "Phone Verification",
+      verified: !!user?.phone,
     },
     {
-      key: "selfie",
-      title: "Selfie Verification",
-      status: documents.selfie,
-      description: "Face Matching Verification",
+      icon: <FaIdCard />,
+      label: "Government ID",
+      verified: !!user?.kycVerified,
+    },
+    {
+      icon: <FaUniversity />,
+      label: "Bank Account",
+      verified: !!user?.bankLinked,
     },
   ];
 
+  const completed = checks.filter(c => c.verified).length;
+  const progress = (completed / checks.length) * 100;
+
   return (
+
     <div className={styles.card}>
 
       <div className={styles.header}>
+
         <div>
-          <h2>KYC Verification</h2>
-          <p>Complete verification to unlock seller features.</p>
+
+          <h2>Identity Verification</h2>
+
+          <p>
+            Complete verification to increase buyer trust.
+          </p>
+
         </div>
 
-        <span className={styles.badge}>
-          {progress}% Complete
-        </span>
       </div>
 
-      <div className={styles.progressWrapper}>
+      <div className={styles.level}>
+
+        <FaShieldAlt className={styles.bigIcon} />
+
+        <div>
+
+          <h3>
+
+            {
+              progress === 100
+                ? "Verified Account"
+                : "Verification Required"
+            }
+
+          </h3>
+
+          <p>
+
+            {completed} of {checks.length} verification steps completed.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <div className={styles.progress}>
+
         <div
-          className={styles.progressBar}
+          className={styles.fill}
           style={{ width: `${progress}%` }}
         />
+
       </div>
 
-      <div className={styles.documentList}>
-        {cards.map((doc) => (
-          <div
-            className={styles.documentCard}
-            key={doc.key}
-          >
-            <div className={styles.left}>
+      <div className={styles.list}>
 
-              <div
-                className={`${styles.icon} ${
-                  doc.status
-                    ? styles.success
-                    : styles.pending
-                }`}
-              >
-                {doc.status ? "✔" : "!"}
+        {
+
+          checks.map((item, index) => (
+
+            <div
+              key={index}
+              className={styles.item}
+            >
+
+              <div className={styles.left}>
+
+                {item.icon}
+
+                <span>
+
+                  {item.label}
+
+                </span>
+
               </div>
 
-              <div>
-                <h4>{doc.title}</h4>
-                <p>{doc.description}</p>
-              </div>
+              {
+
+                item.verified ? (
+
+                  <span className={styles.success}>
+
+                    <FaCheckCircle />
+
+                    Verified
+
+                  </span>
+
+                ) : (
+
+                  <span className={styles.pending}>
+
+                    <FaTimesCircle />
+
+                    Pending
+
+                  </span>
+
+                )
+
+              }
 
             </div>
 
-            <div className={styles.right}>
+          ))
 
-              <span
-                className={
-                  doc.status
-                    ? styles.verified
-                    : styles.notVerified
-                }
-              >
-                {doc.status
-                  ? "Verified"
-                  : "Pending"}
-              </span>
+        }
 
-              {!doc.status && (
-                <button>
-                  Upload
-                </button>
-              )}
-
-            </div>
-          </div>
-        ))}
       </div>
-
-      <div className={styles.note}>
-        Verification usually takes
-        <strong> 24–48 hours </strong>
-        after documents are uploaded.
-      </div>
-
-      <button className={styles.verifyBtn}>
-        Continue Verification
-      </button>
 
     </div>
+
   );
+
 }

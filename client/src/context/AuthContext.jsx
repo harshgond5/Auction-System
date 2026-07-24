@@ -29,6 +29,25 @@ const dummyUsers = [
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
+function updateUser(updatedData) {
+
+    const updatedUser = {
+
+        ...user,
+
+        ...updatedData,
+
+    };
+
+    setUser(updatedUser);
+
+    localStorage.setItem(
+        "auctionhub-user",
+        JSON.stringify(updatedUser)
+    );
+
+}  
+
   useEffect(() => {
     const savedUser = localStorage.getItem("auctionhub-user");
 
@@ -76,6 +95,7 @@ const AuthProvider = ({ children }) => {
         user,
         login,
         logout,
+        updateUser,
       }}
     >
       {children}

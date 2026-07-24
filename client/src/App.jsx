@@ -17,6 +17,7 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOTP from "./pages/VerifyOTP";
 import ResetPassword from "./pages/ResetPassword";
+import AI from "./components/AIAssistant/AI";
 
 // Uncomment after creating the page
 // import AdminDashboard from "./pages/AdminDashboard";
@@ -24,123 +25,89 @@ import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 
 function App() {
-  return (
-    <Routes>
+   return (
+    <>
+      <Routes>
 
-      {/* ================= PUBLIC LAYOUT ================= */}
+        {/* ================= PUBLIC LAYOUT ================= */}
 
-      <Route element={<MainLayout />}>
+        <Route element={<MainLayout />}>
 
-        <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
 
-        <Route
-          path="/auctions"
-          element={<Auctions />}
-        />
+          <Route path="/auctions" element={<Auctions />} />
 
-        <Route
-          path="/auctions/:id"
-          element={<AuctionDetails />}
-        />
+          <Route path="/auctions/:id" element={<AuctionDetails />} />
 
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/seller-dashboard"
-          element={
-            <ProtectedRoute role="seller">
-              <SellerDashboard />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/seller-dashboard"
+            element={
+              <ProtectedRoute role="seller">
+                <SellerDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/watchlist"
-          element={
-            <ProtectedRoute>
-              <Watchlist />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/watchlist"
+            element={
+              <ProtectedRoute>
+                <Watchlist />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/settings"
-          element={
-            <ProtectedRoute>
-              <Settings />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/create-auction"
-          element={
-            <ProtectedRoute role="seller">
-              <CreateAuction />
-            </ProtectedRoute>
-          }
-        />
-           {/* ================= AUTH PAGES ================= */}
+          <Route
+            path="/create-auction"
+            element={
+              <ProtectedRoute role="seller">
+                <CreateAuction />
+              </ProtectedRoute>
+            }
+          />
 
-      <Route
-        path="/login"
-        element={<Login />}
-      />
+          {/* ================= AUTH PAGES ================= */}
 
-      <Route
-        path="/register"
-        element={<Register />}
-      />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/verify-otp" element={<VerifyOTP />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
-      <Route
-        path="/forgot-password"
-        element={<ForgotPassword />}
-      />
+        </Route>
 
-      <Route
-        path="/verify-otp"
-        element={<VerifyOTP />}
-      />
+      </Routes>
 
-      <Route
-        path="/reset-password"
-        element={<ResetPassword />}
-      />
-      
-      </Route>
+      <AI />
 
-     
-
-      {/* ================= ADMIN ================= */}
-
-      {/*
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute role="admin">
-            <AdminDashboard />
-          </ProtectedRoute>
-        }
-      />
-      */}
-
-    </Routes>
+    </>
   );
 }
 

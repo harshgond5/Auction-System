@@ -1,151 +1,89 @@
 .card{
     background:#fff;
-    border-radius:20px;
+    border-radius:22px;
     padding:28px;
-    box-shadow:0 10px 25px rgba(0,0,0,.06);
+    border:1px solid #e2e8f0;
+    box-shadow:0 10px 30px rgba(15,23,42,.06);
 }
 
 .header{
-    margin-bottom:30px;
+    margin-bottom:28px;
+    border-bottom:1px solid #e2e8f0;
+    padding-bottom:18px;
 }
 
 .header h2{
-    color:#111827;
+    font-size:1.4rem;
+    color:#0f172a;
     margin-bottom:6px;
 }
 
 .header p{
-    color:#6b7280;
-}
-
-.section{
-    margin-bottom:35px;
-}
-
-.section h3{
-    margin-bottom:18px;
-    color:#111827;
-}
-
-.row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 0;
-    border-bottom:1px solid #edf2f7;
-}
-
-.row:last-child{
-    border-bottom:none;
-}
-
-.row h4{
-    margin-bottom:4px;
-    font-size:15px;
-}
-
-.row span{
-    color:#6b7280;
-    font-size:14px;
-}
-
-.success{
-    color:#16a34a!important;
-    font-weight:600;
-}
-
-.pending{
-    color:#ea580c!important;
-    font-weight:600;
-}
-
-.row button{
-    border:none;
-    background:#2563eb;
-    color:white;
-    padding:10px 18px;
-    border-radius:10px;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.row button:hover{
-    background:#1d4ed8;
-}
-
-.wallet{
-    margin-top:10px;
-}
-
-.wallet h3{
-    margin-bottom:18px;
-}
-
-.walletGrid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-    margin-bottom:20px;
-}
-
-.walletCard{
-    background:#f8fafc;
-    border:2px solid #e5e7eb;
-    border-radius:14px;
-    padding:18px;
-    text-align:center;
-    transition:.25s;
-}
-
-.walletCard:hover{
-    border-color:#2563eb;
-    transform:translateY(-2px);
-}
-
-.walletCard small{
     color:#64748b;
+    font-size:.95rem;
 }
 
-.walletCard h2{
-    margin-top:8px;
-    color:#111827;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
-.withdraw{
-    width:100%;
-    background:#16a34a;
-    color:white;
-    border:none;
-    padding:14px;
-    border-radius:12px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.withdraw:hover{
-    background:#15803d;
-}
-
-@media(max-width:768px){
-
-.row{
-    flex-direction:column;
+.item{
+    display:flex;
     align-items:flex-start;
-    gap:14px;
+    gap:16px;
+    padding:18px;
+    border-radius:16px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    transition:.3s;
 }
 
-.walletGrid{
+.item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(37,99,235,.08);
+}
+
+.icon{
+    width:44px;
+    height:44px;
+    padding:12px;
+    border-radius:12px;
+    background:#dbeafe;
+    color:#2563eb;
+    flex-shrink:0;
+}
+
+.item span{
+    display:block;
+    font-size:.82rem;
+    color:#64748b;
+    margin-bottom:4px;
+}
+
+.item strong{
+    font-size:1rem;
+    color:#0f172a;
+    font-weight:600;
+}
+
+@media(max-width:900px){
+
+.grid{
     grid-template-columns:1fr;
 }
 
-.row button,
-.withdraw{
-    width:100%;
 }
 
+@media(max-width:600px){
+
 .card{
-    padding:22px;
+    padding:20px;
+}
+
+.item{
+    padding:15px;
 }
 
 }

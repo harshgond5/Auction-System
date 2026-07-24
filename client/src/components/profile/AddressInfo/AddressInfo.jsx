@@ -1,123 +1,111 @@
-import { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
+
+import {
+  FaMapMarkerAlt,
+  FaCity,
+  FaMap,
+  FaGlobeAsia,
+  FaMailBulk,
+} from "react-icons/fa";
+
 import styles from "./AddressInfo.module.css";
 
 export default function AddressInfo() {
-  const [address, setAddress] = useState({
-    street: "",
-    city: "",
-    state: "",
-    country: "",
-    pincode: "",
-  });
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    setAddress((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    console.log(address);
-
-    alert("Address Updated Successfully!");
-  }
+  const { user } = useAuth();
 
   return (
+
     <div className={styles.card}>
+
       <div className={styles.header}>
+
         <div>
+
           <h2>Address Information</h2>
-          <p>Keep your address updated for shipping and billing.</p>
+
+          <p>Your registered address details.</p>
+
         </div>
 
-        <button
-          type="submit"
-          form="addressForm"
-          className={styles.saveBtn}
-        >
-          Save Address
-        </button>
       </div>
 
-      <form
-        id="addressForm"
-        className={styles.form}
-        onSubmit={handleSubmit}
-      >
-        <div className={styles.field}>
-          <label>Street Address</label>
+      <div className={styles.grid}>
 
-          <input
-            type="text"
-            name="street"
-            placeholder="123 MG Road"
-            value={address.street}
-            onChange={handleChange}
-          />
+        <div className={styles.item}>
+
+          <FaMapMarkerAlt className={styles.icon} />
+
+          <div>
+
+            <span>Street Address</span>
+
+            <strong>{user?.address || "Not Added"}</strong>
+
+          </div>
+
         </div>
 
-        <div className={styles.grid}>
-          <div className={styles.field}>
-            <label>City</label>
+        <div className={styles.item}>
 
-            <input
-              type="text"
-              name="city"
-              placeholder="Bhopal"
-              value={address.city}
-              onChange={handleChange}
-            />
+          <FaCity className={styles.icon} />
+
+          <div>
+
+            <span>City</span>
+
+            <strong>{user?.city || "Not Added"}</strong>
+
           </div>
 
-          <div className={styles.field}>
-            <label>State</label>
-
-            <input
-              type="text"
-              name="state"
-              placeholder="Madhya Pradesh"
-              value={address.state}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className={styles.field}>
-            <label>Country</label>
-
-            <input
-              type="text"
-              name="country"
-              placeholder="India"
-              value={address.country}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className={styles.field}>
-            <label>PIN Code</label>
-
-            <input
-              type="text"
-              name="pincode"
-              placeholder="462001"
-              value={address.pincode}
-              onChange={handleChange}
-            />
-          </div>
         </div>
 
-        <button
-          type="submit"
-          className={styles.mobileBtn}
-        >
-          Save Address
-        </button>
-      </form>
+        <div className={styles.item}>
+
+          <FaMap className={styles.icon} />
+
+          <div>
+
+            <span>State</span>
+
+            <strong>{user?.state || "Not Added"}</strong>
+
+          </div>
+
+        </div>
+
+        <div className={styles.item}>
+
+          <FaMailBulk className={styles.icon} />
+
+          <div>
+
+            <span>PIN Code</span>
+
+            <strong>{user?.pincode || "Not Added"}</strong>
+
+          </div>
+
+        </div>
+
+        <div className={styles.item}>
+
+          <FaGlobeAsia className={styles.icon} />
+
+          <div>
+
+            <span>Country</span>
+
+            <strong>{user?.country || "India"}</strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
   );
+
 }

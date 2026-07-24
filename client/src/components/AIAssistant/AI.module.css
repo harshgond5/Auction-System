@@ -1,0 +1,278 @@
+/* =========================================
+   FLOATING AI BUTTON
+========================================= */
+
+.aiButton{
+
+    position:fixed;
+
+    bottom:28px;
+
+    right:28px;
+
+    width:65px;
+
+    height:65px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.6rem;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 30px rgba(37,99,235,.35);
+
+    z-index:9999;
+
+    transition:.3s;
+
+}
+
+.aiButton:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.45);
+
+}
+
+.aiButton:active{
+
+    transform:scale(.95);
+
+}
+/*=========================================
+CHAT WINDOW
+=========================================*/
+
+.chatWindow{
+
+position:fixed;
+
+bottom:105px;
+
+right:25px;
+
+width:380px;
+
+height:620px;
+
+background:white;
+
+border-radius:20px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.18);
+
+display:flex;
+
+flex-direction:column;
+
+overflow:hidden;
+
+z-index:9998;
+
+animation:popup .25s ease;
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px) scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+.chatHeader{
+
+padding:18px 20px;
+
+background:#2563eb;
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.chatHeader h3{
+
+margin:0;
+
+font-size:1.05rem;
+
+}
+
+.chatHeader span{
+
+font-size:.8rem;
+
+opacity:.8;
+
+}
+
+.closeBtn{
+
+border:none;
+
+background:none;
+
+color:white;
+
+font-size:1.2rem;
+
+cursor:pointer;
+
+}
+
+.chatBody{
+
+flex:1;
+
+padding:18px;
+
+overflow-y:auto;
+
+background:#f8fafc;
+
+}
+
+.aiMessage{
+
+background:white;
+
+padding:15px;
+
+border-radius:15px;
+
+line-height:1.6;
+
+box-shadow:0 5px 12px rgba(0,0,0,.05);
+
+}
+
+.aiMessage ul{
+
+margin-top:10px;
+
+padding-left:18px;
+
+}
+
+/*=========================
+MESSAGES
+=========================*/
+
+.userMessage{
+
+    margin-left:auto;
+
+    margin-bottom:12px;
+
+    max-width:80%;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:12px 16px;
+
+    border-radius:18px 18px 4px 18px;
+
+    white-space:pre-wrap;
+
+}
+
+.aiMessage{
+
+    margin-bottom:12px;
+
+    max-width:80%;
+
+    background:white;
+
+    padding:12px 16px;
+
+    border-radius:18px 18px 18px 4px;
+
+    white-space:pre-wrap;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+}
+
+/*=========================
+INPUT
+=========================*/
+
+.chatInput{
+
+    display:flex;
+
+    padding:15px;
+
+    border-top:1px solid #e5e7eb;
+
+    background:white;
+
+}
+
+.chatInput input{
+
+    flex:1;
+
+    border:1px solid #d1d5db;
+
+    border-radius:25px;
+
+    padding:12px 16px;
+
+    outline:none;
+
+}
+
+.chatInput button{
+
+    margin-left:10px;
+
+    width:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+}

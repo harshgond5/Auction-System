@@ -24,3 +24,10 @@ Thumbs.db
 
 # VS Code
 .vscode/
+
+# Streamlit secrets
+ai/.streamlit/secrets.toml
+
+# Environment files
+.env
+.env.*
