@@ -1,4 +1,4 @@
-import DrawerHeader from "../DrawerHeader/DrawerHeader";
+import DrawerHeader from "../AuctionDrawer/DrawerHeader";
 
 import styles from "./QuickBid.module.css";
 

@@ -6,9 +6,10 @@
     box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
-.row{
-    display:flex;
-    justify-content:space-between;
-    padding:15px 0;
-    border-bottom:1px solid #eee;
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin:12px 0;
 }

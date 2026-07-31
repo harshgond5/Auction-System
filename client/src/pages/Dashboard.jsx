@@ -1,46 +1,27 @@
 import DashboardHeader from "../components/dashboard/DashboardHeader/DashboardHeader";
-import StatsGrid from "../components/dashboard/StatsGrid/StatsGrid";
-import RecentBids from "../components/dashboard/RecentBids/RecentBids";
+import QuickActions from "../components/dashboard/QuickActions/QuickActions";
+// import StatsCards from "../components/dashboard/StatsCards/StatsCards";
 import MyAuctions from "../components/dashboard/MyAuctions/MyAuctions";
-import FraudAlerts from "../components/dashboard/FraudAlerts/FraudAlerts";
-
-import {
-  currentUser,
-  dashboardStats,
-  recentBids,
-  myAuctions,
-  fraudAlerts,
-} from "../data/dummyData";
+import RecentBids from "../components/dashboard/RecentBids/RecentBids";
+import Notifications from "../components/dashboard/Notifications/Notifications";
+import Activity from "../components/dashboard/Activity/Activity";
 
 export default function Dashboard() {
   return (
     <div
       style={{
-        maxWidth: "1200px",
+        maxWidth: "1400px",
         margin: "40px auto",
         padding: "0 20px",
       }}
     >
-    <DashboardHeader user={currentUser} />
-    <StatsGrid stats={dashboardStats} />
-    <RecentBids bids={recentBids} />
-
-    <div
-    style={{
-        marginTop: "32px",
-    }}
-    >
-  <MyAuctions auctions={myAuctions} />
-    </div>
-
-    <div
-    style={{
-    marginTop: "32px",
-    }}
-    >   
-    <FraudAlerts alerts={fraudAlerts} />
-    </div>
-
+      <DashboardHeader />
+      <QuickActions />
+      {/* <StatsCards /> */}
+      <MyAuctions />
+      <RecentBids />
+      <Notifications />
+      <Activity />
     </div>
   );
 }

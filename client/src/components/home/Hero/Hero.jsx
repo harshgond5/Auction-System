@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { FaArrowRight, FaGavel } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import styles from "./Hero.module.css";
+import { featuredAuctions } from "../../../data/dummyData";
+import AuctionDrawer from "../../auction/AuctionDrawer/AuctionDrawer";
 
 const words = [
   "Bid Smarter.",
@@ -17,36 +19,12 @@ const stats = [
   { number: "₹2.4Cr", label: "Trading Volume" },
 ];
 
-const auctions = [
-  {
-    title: "MacBook Pro M3",
-    bid: "₹1,25,000",
-    time: "02:14:18",
-    image:
-      "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?w=1200",
-  },
-  {
-    title: "Sony Alpha A7 IV",
-    bid: "₹1,75,000",
-    time: "01:08:43",
-    image:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200",
-  },
-  {
-    title: "iPhone 15 Pro",
-    bid: "₹95,000",
-    time: "03:42:15",
-    image:
-      "https://images.unsplash.com/photo-1695048133142-1a204b3d1a12?w=1200",
-  },
-];
-
-
 export default function Hero() {
 
   const [text, setText] = useState("");
   const [word, setWord] = useState(0);
   const [auction, setAuction] = useState(0);
+  const [selectedAuction, setSelectedAuction] = useState(null);
   const navigate = useNavigate();
   const isLoggedIn = !!localStorage.getItem("auctionhub-user");
   const handleStartBidding = () => {
@@ -69,12 +47,12 @@ const handleSellItem = () => {
 
     if (isLoggedIn) {
 
-        navigate("/seller/create-auction");
+        navigate("/create-auction");
 
     } else {
 
         navigate("/login", {
-            state: { from: "/seller/create-auction" }
+            state: { from: "/create-auction" }
         });
 
     }
@@ -115,7 +93,7 @@ const handleSellItem = () => {
 
     const slider = setInterval(() => {
 
-      setAuction((prev) => (prev + 1) % auctions.length);
+      setAuction((prev) => (prev + 1) % featuredAuctions.length);
 
     }, 4000);
 
@@ -123,6 +101,7 @@ const handleSellItem = () => {
 
   }, []);
 
+  const currentAuction = featuredAuctions[auction];
   return (
     <section className={styles.hero}>
 
@@ -194,7 +173,7 @@ const handleSellItem = () => {
           <div className={styles.auctionCard}>
 
             <img
-              src={auctions[auction].image}
+              src={currentAuction.image}
               alt=""
             />
 
@@ -205,7 +184,7 @@ const handleSellItem = () => {
               </span>
 
               <h3>
-                {auctions[auction].title}
+                {currentAuction.title}
               </h3>
 
               <div className={styles.info}>
@@ -215,7 +194,7 @@ const handleSellItem = () => {
                   <small>Current Bid</small>
 
                   <strong>
-                    {auctions[auction].bid}
+                    {currentAuction.bid}
                   </strong>
 
                 </div>
@@ -225,14 +204,14 @@ const handleSellItem = () => {
                   <small>Ends In</small>
 
                   <strong>
-                    {auctions[auction].time}
+                    {currentAuction.time}
                   </strong>
 
                 </div>
 
               </div>
 
-              <button>
+              <button  onClick={() => setSelectedAuction(currentAuction)}>
                 View Auction
               </button>
 
@@ -243,7 +222,11 @@ const handleSellItem = () => {
         </motion.div>
 
       </div>
-
+    <AuctionDrawer
+    open={selectedAuction !== null}
+    auction={selectedAuction}
+    onClose={() => setSelectedAuction(null)}
+    />
     </section>
   );
 

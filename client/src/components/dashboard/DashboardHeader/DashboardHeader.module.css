@@ -1,41 +1,17 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
-  gap: 20px;
+.header{
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    margin-bottom:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
-.header h1 {
-  color: #111827;
-  margin-bottom: 8px;
+.header h1{
+    margin:0;
+    font-size:32px;
 }
 
-.header p {
-  color: #6b7280;
-}
-
-.button {
-  border: none;
-  background: #2563eb;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.button:hover {
-  background: #1d4ed8;
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .button {
-    width: 100%;
-  }
+.header p{
+    margin-top:10px;
+    color:#666;
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import DrawerHeader from "../auction/DrawerHeader/DrawerHeader";
+import DrawerHeader from "../auction/AuctionDrawer/DrawerHeader";
 import QuickBid from "../auction/QuickBid/QuickBid";
 import BidHistory from "../auction/BidHistory/BidHistory";
 import AuctionDrawer from "../auction/AuctionDrawer/AuctionDrawer";
@@ -78,7 +78,7 @@ export default function AuctionDetails({ auction, close }) {
 
     </div>
 
-      {/* <AuctionDrawer
+      <AuctionDrawer
         open={openBid}
         onClose={() => setOpenBid(false)}
       >
@@ -96,7 +96,7 @@ export default function AuctionDetails({ auction, close }) {
           auction={auction}
           close={() => setOpenHistory(false)}
         />
-      </AuctionDrawer> */}
+      </AuctionDrawer>
     </>
   );
 }

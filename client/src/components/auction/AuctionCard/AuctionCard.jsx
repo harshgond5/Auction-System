@@ -1,12 +1,9 @@
 import { useState } from "react";
 import AuctionDetails from "../../auctionDetails/AuctionDetails";
-import AuctionDrawer from "../AuctionDrawer/AuctionDrawer";
 
 import styles from "./AuctionCard.module.css";
 
-export default function AuctionCard({ auction }) {
-  const [open, setOpen] = useState(false);
-
+export default function AuctionCard({ auction, onView }) {
   return (
     <>
       <div className={styles.card}>
@@ -39,24 +36,16 @@ export default function AuctionCard({ auction }) {
             <span>⏳ {auction.timeLeft}</span>
 
             <button
-              className={styles.button}
-              onClick={() => setOpen(true)}
-            >
-              View Auction
-            </button>
+    className={styles.button}
+    onClick={() => onView(auction)}
+>
+    View Auction
+</button>
           </div>
         </div>
       </div>
 
-      <AuctionDrawer
-        open={open}
-        onClose={() => setOpen(false)}
-      >
-      <AuctionDetails
-        auction={auction}
-        close={() => setOpen(false)}
-      />
-      </AuctionDrawer>
+    
     </>
   );
 }

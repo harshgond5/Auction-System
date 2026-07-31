@@ -1,33 +1,58 @@
 import styles from "./MyAuctions.module.css";
 
-export default function MyAuctions({ auctions }) {
-  return (
-    <div className={styles.card}>
-      <div className={styles.header}>
-        <h2>My Auctions</h2>
-      </div>
+export default function MyAuctions() {
 
-      <div className={styles.list}>
-        {auctions.map((auction) => (
-          <div key={auction.id} className={styles.row}>
-            <div>
-              <h4>{auction.title}</h4>
+    const auctions = [
+        {
+            title: "iPhone 15 Pro",
+            status: "Live",
+            bids: 12,
+        },
+        {
+            title: "MacBook Pro M3",
+            status: "Draft",
+            bids: 0,
+        },
+        {
+            title: "Sony PS5",
+            status: "Ended",
+            bids: 24,
+        },
+    ];
 
-              <span>
-                {auction.bids} Bids • {auction.currentBid}
-              </span>
-            </div>
+    return (
+        <div className={styles.card}>
 
-            <span
-              className={`${styles.badge} ${
-                styles[(auction.status || "").toLowerCase().replace(" ", "")]
-              }`}
-            >
-              {auction.status}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+            <h2>My Auctions</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Bids</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {auctions.map((item,index)=>(
+
+                        <tr key={index}>
+                            <td>{item.title}</td>
+                            <td>{item.status}</td>
+                            <td>{item.bids}</td>
+                        </tr>
+
+                    ))}
+
+                </tbody>
+
+            </table>
+
+        </div>
+    );
 }

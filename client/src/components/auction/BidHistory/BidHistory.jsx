@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import DrawerHeader from "../DrawerHeader/DrawerHeader";
+import DrawerHeader from "../AuctionDrawer/DrawerHeader";
 import styles from "./BidHistory.module.css";
 
 export default function BidHistory({ close }) {

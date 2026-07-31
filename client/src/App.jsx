@@ -6,12 +6,10 @@ import Home from "./pages/Home";
 import Auctions from "./pages/Auctions";
 import AuctionDetails from "./pages/AuctionDetails";
 import Dashboard from "./pages/Dashboard";
-import SellerDashboard from "./pages/SellerDashboard";
 import Profile from "./pages/Profile";
 import Watchlist from "./pages/Watchlist";
 import Settings from "./pages/Settings";
 import CreateAuction from "./pages/CreateAuction";
-
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -49,15 +47,6 @@ function App() {
           />
 
           <Route
-            path="/seller-dashboard"
-            element={
-              <ProtectedRoute role="seller">
-                <SellerDashboard />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
             path="/profile"
             element={
               <ProtectedRoute>
@@ -85,13 +74,13 @@ function App() {
           />
 
           <Route
-            path="/create-auction"
-            element={
-              <ProtectedRoute role="seller">
-                <CreateAuction />
-              </ProtectedRoute>
-            }
-          />
+           path="/create-auction"
+           element={
+          <ProtectedRoute role="user">
+            <CreateAuction />
+          </ProtectedRoute>
+    }
+/>
 
           {/* ================= AUTH PAGES ================= */}
 

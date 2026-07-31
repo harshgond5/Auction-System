@@ -1,34 +1,44 @@
 import styles from "./RecentBids.module.css";
 
-export default function RecentBids({ bids }) {
-  return (
-    <div className={styles.card}>
-      <div className={styles.header}>
-        <h2>Recent Bids</h2>
-      </div>
+export default function RecentBids(){
 
-      <div className={styles.table}>
-        {bids.map((bid) => (
-          <div key={bid.id} className={styles.row}>
-            <div>
-              <h4>{bid.product}</h4>
-              <span>{bid.time}</span>
-            </div>
+    const bids=[
+        {
+            item:"Samsung S24 Ultra",
+            amount:"₹72,000"
+        },
+        {
+            item:"Rolex Watch",
+            amount:"₹2,15,000"
+        },
+        {
+            item:"Gaming PC",
+            amount:"₹98,000"
+        }
+    ];
 
-            <div className={styles.right}>
-              <strong>{bid.amount}</strong>
+    return(
 
-              <span
-                className={`${styles.status} ${
-                  styles[bid.status.toLowerCase()]
-                }`}
-              >
-                {bid.status}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+        <div className={styles.card}>
+
+            <h2>Recent Bids</h2>
+
+            {bids.map((bid,index)=>(
+
+                <div
+                    key={index}
+                    className={styles.row}
+                >
+                    <span>{bid.item}</span>
+
+                    <strong>{bid.amount}</strong>
+
+                </div>
+
+            ))}
+
+        </div>
+
+    )
+
 }

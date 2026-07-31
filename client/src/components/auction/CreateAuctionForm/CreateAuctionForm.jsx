@@ -1,64 +1,215 @@
 import { useState } from "react";
 import styles from "./CreateAuctionForm.module.css";
+import ProductDetails from "./ProductDetails";
+import ProductImages from "./ProductImages";
+import PricingSection from "./PricingSection";
+import AuctionSettings from "./AuctionSettings";
+import AdditionalInfo from "./AdditionalInfo";
+import Acknowledgement from "./Acknowledgement";
+import { createAuction } from "../../../services/auctionService";
 
-import StepIndicator from "./StepIndicator";
-import DetailsStep from "./DetailsStep";
-import AssetsStep from "./AssetsStep";
-import SecurityStep from "./SecurityStep";
 
 export default function CreateAuctionForm() {
-  const [step, setStep] = useState(1);
+    const [loading, setLoading] = useState(false);
+  const [auctionData, setAuctionData] = useState({
+        title: "",
+        description: "",
 
-  const nextStep = () => {
-    if (step < 3) setStep(step + 1);
-  };
+        category: "",
+        subCategory: "",
 
-  const prevStep = () => {
-    if (step > 1) setStep(step - 1);
-  };
+        brand: "",
+        model: "",
 
-  return (
-    <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <h1>Create New Auction</h1>
-        <p>Create a professional auction listing in just a few steps.</p>
-      </div>
+        condition: "New",
 
-      <StepIndicator currentStep={step} />
+        quantity: 1,
 
-      <div className={styles.card}>
-        {step === 1 && <DetailsStep />}
-        {step === 2 && <AssetsStep />}
-        {step === 3 && <SecurityStep />}
+        images: [],
 
-        <div className={styles.footer}>
-          {step > 1 && (
-            <button
-              className={styles.secondaryBtn}
-              onClick={prevStep}
-            >
-              Back
-            </button>
-          )}
+        startingPrice: "",
+        reservePrice: "",
+        buyNowPrice: "",
+        bidIncrement: "",
 
-          <button className={styles.secondaryBtn}>
-            Save Draft
-          </button>
+        startDate: "",
+        endDate: "",
 
-          {step < 3 ? (
-            <button
-              className={styles.primaryBtn}
-              onClick={nextStep}
-            >
-              Continue
-            </button>
-          ) : (
-            <button className={styles.primaryBtn}>
-              Publish Auction
-            </button>
-          )}
-        </div>
-      </div>
+        pickup: false,
+        shipping: true,
+        shippingCost: "",
+
+        dispatchTime: "",
+        country: "India",
+        state: "",
+        city: "",
+
+        warranty: "",
+        returnPolicy: "",
+        accessories: "",
+        tags: "",
+
+        agree: false
+
+    });
+
+
+    function updateField(name, value) {
+
+        setAuctionData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+
+    }
+
+async function publishAuction(e){
+
+    e.preventDefault();
+
+    if(!auctionData.title){
+
+        alert("Enter title");
+
+        return;
+
+    }
+
+    if(auctionData.images.length===0){
+
+        alert("Upload product images");
+
+        return;
+
+    }
+
+    if(!auctionData.agree){
+
+        alert("Accept acknowledgement");
+
+        return;
+
+    }
+
+    setLoading(true);
+
+    const response=await createAuction(
+
+        auctionData
+
+    );
+
+    setLoading(false);
+
+    if(response.success){
+
+        alert("Auction Published Successfully");
+
+    }
+
+    else{
+
+        alert(response.message);
+
+    }
+
+}
+
+    function saveDraft() {
+
+        console.log("Draft", auctionData);
+
+    }
+
+    return (
+
+        <form
+            className={styles.container}
+            onSubmit={publishAuction}
+        >
+
+            <div className={styles.header}>
+
+                <h1>Create Auction</h1>
+
+                <p>
+                    Fill the information below to publish your auction.
+                </p>
+
+            </div>
+
+            <div className={styles.formGrid}>
+
+    <div className={styles.leftColumn}>
+
+        <ProductDetails
+            data={auctionData}
+            updateField={updateField}
+        />
+
+        <PricingSection
+            data={auctionData}
+            updateField={updateField}
+        />
+
+
     </div>
-  );
+
+    <div className={styles.rightColumn}>
+
+        <ProductImages
+            data={auctionData}
+            updateField={updateField}
+        />
+
+        <AuctionSettings
+            data={auctionData}
+            updateField={updateField}
+        />
+       
+    </div>
+
+</div>
+ <AdditionalInfo
+            data={auctionData}
+            updateField={updateField}
+        />
+
+<Acknowledgement
+    data={auctionData}
+    updateField={updateField}
+/>
+
+            <div className={styles.footer}>
+
+                <button
+                    type="button"
+                    className={styles.secondaryBtn}
+                    onClick={saveDraft}
+                >
+                    Save Draft
+                </button>
+
+                <button
+
+                type="submit"
+
+                className={styles.primaryBtn}
+
+                disabled={loading}
+
+                >
+
+                {
+
+                loading ? "Publishing...":"Publish Auction"}
+
+</button>
+
+            </div>
+
+        </form>
+
+    );
+
 }

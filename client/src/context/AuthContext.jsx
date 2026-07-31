@@ -5,20 +5,13 @@ const AuthContext = createContext();
 const dummyUsers = [
   {
     id: 1,
-    name: "Buyer User",
-    email: "buyer@auctionhub.com",
-    password: "Buyer@123",
-    role: "buyer",
+    name: "User",
+    email: "user@auctionhub.com",
+    password: "user@123",
+    role: "userr",
   },
   {
     id: 2,
-    name: "Seller User",
-    email: "seller@auctionhub.com",
-    password: "Seller@123",
-    role: "seller",
-  },
-  {
-    id: 3,
     name: "Admin",
     email: "admin@auctionhub.com",
     password: "Admin@123",

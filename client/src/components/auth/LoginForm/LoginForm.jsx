@@ -50,12 +50,8 @@ function handleSubmit(e) {
     // Otherwise redirect based on role
     switch (res.role) {
 
-        case "buyer":
+        case "user":
             navigate("/dashboard");
-            break;
-
-        case "seller":
-            navigate("/seller-dashboard");
             break;
 
         case "admin":

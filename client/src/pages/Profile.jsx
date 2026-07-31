@@ -7,6 +7,7 @@ import SecurityPayments from "../components/profile/SecurityPayments/SecurityPay
 import KycVerification from "../components/profile/KycVerification/KycVerification";
 import ActivityTimeline from "../components/profile/ActivityTimeline/ActivityTimeline";
 import ProfileModals from "../components/profile/ProfileModals/ProfileModals";
+import ProfileStats from "../components/profile/ProfileStats/ProfileStats";
 
 import styles from "../styles/Profile.module.css";
 
@@ -34,6 +35,7 @@ export default function Profile() {
 
                     <div className={styles.right}>
                         <KycVerification />
+                        <ProfileStats />
                         <ActivityTimeline />
                     </div>
 

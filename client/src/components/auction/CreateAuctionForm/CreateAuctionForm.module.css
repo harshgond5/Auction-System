@@ -1,503 +1,1193 @@
-.wrapper{
-    max-width:700px;
-    margin:20px auto 40px;
-    padding:0 16px;
+/* ===============================
+   PREMIUM CREATE AUCTION UI
+   PART 1/4
+================================*/
+
+:root{
+    --primary:#0066ff;
+    --primary-dark:#0066ff;
+    --secondary:#0066ff;
+    --text:#172554;
+    --text-light:#64748b;
+    --border:#e6edf5;
+    --bg:#f8fbff;
+    --card:#ffffff;
 }
 
-/* ================= Header ================= */
+*{
+    box-sizing:border-box;
+}
+
+.container{
+    width:100%;
+    max-width:100%;
+    min-height:100vh;
+    padding:50px 60px 100px;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at top right,#fff0e1 0%,transparent 28%),
+    radial-gradient(circle at bottom left,#edf5ff 0%,transparent 35%),
+    linear-gradient(180deg,#fbfdff,#f4f8fc);
+}
+
+.container::before{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    right:-220px;
+    top:-180px;
+    border-radius:50%;
+    background:rgba(255,107,0,.08);
+    filter:blur(90px);
+    pointer-events:none;
+}
+
+.container::after{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    left:-180px;
+    bottom:-180px;
+    border-radius:50%;
+    background:rgba(37,99,235,.08);
+    filter:blur(90px);
+    pointer-events:none;
+}
 
 .header{
-    margin-bottom:18px;
+    position:relative;
+    z-index:2;
+    text-align:center;
+    margin-bottom:55px;
 }
 
 .header h1{
-    font-size:26px;
-    font-weight:700;
-    color:#111827;
-    margin-bottom:4px;
+    margin:0;
+    font-size:3.2rem;
+    font-weight:800;
+    letter-spacing:-1px;
+    background:linear-gradient(135deg,#172554,#2563eb,#0066ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .header p{
-    font-size:13px;
-    color:#6b7280;
+    margin-top:12px;
+    color:#64748b;
+    font-size:17px;
 }
 
-/* ================= Card ================= */
-
-.card{
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:16px;
-    box-shadow:0 8px 24px rgba(0,0,0,.05);
-    padding:24px;
-}
-
-/* ================= Stepper ================= */
-
-.stepper{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:22px;
-}
-
-.step{
-    flex:1;
-    display:flex;
-    align-items:center;
+.formGrid{
+    display:grid;
+    grid-template-columns:1.55fr 1fr;
+    gap:35px;
+    align-items:start;
     position:relative;
-}
-
-.circle{
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    border:2px solid #d1d5db;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:14px;
-    font-weight:600;
-    transition:.25s;
     z-index:2;
 }
 
-.active{
-    background:#2563eb;
-    border-color:#2563eb;
-    color:#fff;
+.leftColumn,
+.rightColumn{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
 }
 
-.line{
-    flex:1;
-    height:2px;
-    background:#d1d5db;
+.card{
+    position:relative;
+    width:100%;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(18px);
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.7);
+    padding:32px;
+    overflow:hidden;
+    box-shadow:
+    0 15px 45px rgba(15,23,42,.08);
+    transition:.35s;
 }
 
-.activeLine{
-    background:#2563eb;
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:
+    0 25px 60px rgba(15,23,42,.12);
 }
 
-.step span{
+.card::before{
+    content:"";
     position:absolute;
-    top:42px;
-    left:-3px;
-    font-size:12px;
-    color:#6b7280;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:
+    linear-gradient(90deg,#0066ff,#0066ff);
 }
 
-/* ================= Section ================= */
-
-.sectionHeader{
-    margin-bottom:18px;
+.card h2{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:0 0 28px;
+    color:#172554;
+    font-size:24px;
+    font-weight:700;
 }
 
-.sectionHeader h2{
-    font-size:20px;
-    color:#111827;
-    margin-bottom:4px;
+.card h2 svg{
+    width:48px;
+    height:48px;
+    padding:12px;
+    border-radius:16px;
+    color:white;
+    background:
+    linear-gradient(135deg,#0066ff,#0066ff);
+    box-shadow:
+    0 10px 25px rgba(255,107,0,.25);
 }
 
-.sectionHeader p{
-    font-size:13px;
-    color:#6b7280;
-}
-
-/* ================= Form ================= */
-
-.grid{
+.grid2{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    gap:22px;
 }
 
 .formGroup{
     display:flex;
     flex-direction:column;
-    margin-bottom:14px;
+    gap:9px;
 }
 
 .formGroup label{
-    font-size:13px;
-    font-weight:600;
-    margin-bottom:6px;
-    color:#374151;
-}
-
-.formGroup input,
-.formGroup select,
-.formGroup textarea{
-
-    width:100%;
-
     font-size:14px;
-
-    border:2px solid #374151;
-
-    border-radius:10px;
-
-    transition:.25s;
-
-    background:#fff;
-
-    box-sizing:border-box;
-
+    font-weight:600;
+    color:#334155;
 }
 
 .formGroup input,
+.formGroup textarea,
 .formGroup select{
-
-    height:42px;
-
-    padding:0 14px;
-
+    width:100%;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:14px;
+    padding:15px 16px;
+    font-size:15px;
+    transition:.25s;
+    outline:none;
 }
 
 .formGroup textarea{
+    min-height:170px;
+    resize:vertical;
+}
 
-    min-height:90px;
-
-    padding:12px 14px;
-
-    resize:none;
-
+.formGroup input:hover,
+.formGroup textarea:hover,
+.formGroup select:hover{
+    border-color:#0066ff;
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus,
 .formGroup select:focus{
-
-    outline:none;
-
-    border-color:#2563eb;
-
-    box-shadow:0 0 0 3px rgba(37,99,235,.15);
-
+    border-color:#0066ff;
+    box-shadow:
+    0 0 0 5px rgba(255,107,0,.12);
 }
 
-/* ================= Upload ================= */
-
-.uploadArea{
-
-    border:2px dashed #93c5fd;
-
-    border-radius:14px;
-
-    background:#f8fbff;
-
-    padding:28px;
-
-    text-align:center;
-
-}
-
-.uploadIcon{
-
-    font-size:42px;
-
-    margin-bottom:10px;
-
-}
-
-.uploadArea h3{
-
-    font-size:18px;
-
-    margin-bottom:6px;
-
-}
-
-.uploadArea p{
-
-    font-size:13px;
-
-    color:#6b7280;
-
-    margin-bottom:16px;
-
-}
-
-.uploadBtn{
-
-    background:#2563eb;
-
-    color:white;
-
-    border:none;
-
-    border-radius:8px;
-
-    padding:10px 18px;
-
-    font-size:14px;
-
-    cursor:pointer;
-
-}
-
-.uploadBtn:hover{
-
-    background:#1d4ed8;
-
-}
-
-.hiddenInput{
-
-    display:none;
-
-}
-
-/* ================= Preview ================= */
-
-.previewGrid{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:12px;
-
-    margin:18px 0;
-
-}
-
-.previewCard{
-
-    height:85px;
-
-    border:2px dashed #cbd5e1;
-
-    border-radius:10px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:12px;
-
+::placeholder{
     color:#94a3b8;
-
 }
 
-/* ================= AI ================= */
-
-.aiBox{
-
-    margin:20px 0;
-
-    padding:18px;
-
-    border-radius:14px;
-
-    border:1px solid #bfdbfe;
-
-    background:#eff6ff;
-
+.uploadBox{
+    min-height:370px;
+    border:2px dashed #ff7a00;
+    border-radius:24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    background:#fffaf6;
+    cursor:pointer;
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
 }
 
-.aiTitle{
-
-    font-size:16px;
-
-    font-weight:700;
-
-    color:#1d4ed8;
-
-    margin-bottom:10px;
-
+.uploadBox:hover{
+    background:#fff3e7;
+    border-color:#0066ff;
 }
 
-.aiBox p{
-
-    font-size:14px;
-
-    color:#475569;
-
+.uploadBox::before{
+    content:"";
+    position:absolute;
+    left:-120%;
+    top:0;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+    );
+    transition:.8s;
 }
 
-.aiStatus{
-
-    margin-top:12px;
-
+.uploadBox:hover::before{
+    left:120%;
 }
 
-.good{
+.uploadBox svg{
+    font-size:70px;
+    color:#0066ff;
+}
 
-    color:#16a34a;
+.uploadBox h3{
+    margin:0;
+    color:#172554;
+    font-size:24px;
+}
 
+.uploadBox p{
+    margin:0;
+    text-align:center;
+    color:#64748b;
+    line-height:1.7;
+}
+/* ===============================
+   PREMIUM CREATE AUCTION UI
+   PART 2/4
+================================*/
+
+.imageGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:24px;
+}
+
+.imageCard{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(15,23,42,.08);
+    transition:.3s;
+}
+
+.imageCard:hover{
+    transform:translateY(-4px);
+}
+
+.imageCard img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    display:block;
+    transition:.35s;
+}
+
+.imageCard:hover img{
+    transform:scale(1.05);
+}
+
+.thumbnailBadge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:linear-gradient(135deg,#0066ff,#0066ff);
+    color:#fff;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
     font-weight:600;
-
+    box-shadow:0 8px 18px rgba(255,107,0,.25);
 }
 
-/* ================= Summary ================= */
+.imageNumber{
+    position:absolute;
+    bottom:12px;
+    left:12px;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:rgba(15,23,42,.9);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:600;
+}
 
-.summary{
+.deleteImage{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    color:#ef4444;
+    cursor:pointer;
+    transition:.25s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
+.deleteImage:hover{
+    background:#ef4444;
+    color:#fff;
+    transform:scale(1.08);
+}
+
+.imageCount{
     margin-top:18px;
+    color:#64748b;
+    text-align:center;
+    font-size:14px;
+}
 
-    border:1px solid #e5e7eb;
+/* ===============================
+   DROPDOWNS
+================================*/
 
+.dropdownBox{
+    width:100%;
+    border:1px solid #dbe5ef;
     border-radius:14px;
-
-    padding:18px;
-
+    overflow:hidden;
+    background:#fff;
+    transition:.3s;
 }
 
-.summary h3{
-
-    font-size:17px;
-
-    margin-bottom:12px;
-
+.dropdownBox:hover{
+    border-color:#0066ff;
 }
 
-.summaryRow{
+.dropdownBox summary{
+    list-style:none;
+    padding:16px 18px;
+    cursor:pointer;
+    position:relative;
+    font-weight:600;
+    color:#172554;
+    user-select:none;
+}
 
+.dropdownBox summary::-webkit-details-marker{
+    display:none;
+}
+
+.dropdownBox summary::after{
+    content:"⌄";
+    position:absolute;
+    right:18px;
+    top:16px;
+    font-size:18px;
+    transition:.3s;
+}
+
+.dropdownBox[open] summary::after{
+    transform:rotate(180deg);
+}
+
+.dropdownContent{
     display:flex;
+    flex-direction:column;
+    border-top:1px solid #edf2f7;
+}
 
-    justify-content:space-between;
-
-    padding:8px 0;
-
-    border-bottom:1px solid #f1f5f9;
-
+.dropdownContent button{
+    border:none;
+    background:#fff;
+    padding:14px 18px;
+    cursor:pointer;
+    text-align:left;
+    transition:.2s;
     font-size:14px;
-
 }
 
-.summaryRow:last-child{
-
-    border-bottom:none;
-
+.dropdownContent button:hover{
+    background:#fff6ee;
+    color:#0066ff;
 }
 
-.ready{
+/* ===============================
+   ACCESSORIES
+================================*/
 
-    color:#16a34a;
-
-    font-weight:700;
-
+.checkboxGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    padding:16px;
 }
 
-/* ================= Checkbox ================= */
-
-.checkboxRow{
-
+.checkboxItem{
     display:flex;
+    align-items:center;
+    gap:12px;
+    border:1px solid #e5edf5;
+    border-radius:14px;
+    padding:14px;
+    cursor:pointer;
+    transition:.25s;
+    background:#fff;
+    font-weight:500;
+}
 
-    align-items:flex-start;
+.checkboxItem:hover{
+    border-color:#0066ff;
+    background:#fff8f2;
+    transform:translateY(-2px);
+}
 
+.checkboxItem input{
+    width:18px;
+    height:18px;
+    accent-color:#0066ff;
+}
+
+.radioGroup{
+    display:flex;
+    gap:30px;
+    margin-top:10px;
+    flex-wrap:wrap;
+}
+
+.radioGroup label{
+    display:flex;
+    align-items:center;
     gap:10px;
-
-    margin-top:18px;
-
+    cursor:pointer;
+    font-weight:500;
+    color:#334155;
 }
 
-.checkboxRow label{
+.radioGroup input{
+    accent-color:#0066ff;
+}
+/* ===============================
+   PREMIUM CREATE AUCTION UI
+   PART 3/4
+================================*/
 
-    font-size:14px;
-
-    color:#374151;
-
+.acknowledgement{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    background:linear-gradient(135deg,#fffaf4,#fff4ea);
+    border:1px solid #ffd7b3;
+    border-radius:22px;
+    padding:28px;
 }
 
-/* ================= Footer ================= */
+.acknowledgement label{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    cursor:pointer;
+    color:#334155;
+    line-height:1.8;
+    font-size:15px;
+}
+
+.acknowledgement input{
+    width:20px;
+    height:20px;
+    margin-top:3px;
+    accent-color:#0066ff;
+}
+
+.acknowledgement strong{
+    color:#172554;
+}
+
+.checkboxGroup{
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.checkboxGroup label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    font-weight:500;
+}
+
+.checkboxGroup input{
+    width:18px;
+    height:18px;
+    accent-color:#0066ff;
+}
+
+/* ===============================
+   STICKY ACTION BAR
+================================*/
 
 .footer{
+
+    position:sticky;
+
+    bottom:20px;
 
     display:flex;
 
     justify-content:flex-end;
 
-    gap:12px;
+    align-items:center;
 
-    margin-top:24px;
+    gap:18px;
+
+    margin-top:45px;
+
+    padding:22px 28px;
+
+    border-radius:24px;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,.88);
+
+    border:1px solid rgba(255,255,255,.8);
+
+    box-shadow:
+    0 18px 50px rgba(15,23,42,.08);
+
+    z-index:200;
 
 }
 
-.primaryBtn,
 .secondaryBtn{
 
-    border:none;
+    padding:15px 34px;
 
-    border-radius:10px;
+    border-radius:14px;
 
-    padding:10px 18px;
+    border:1px solid #d9e5ef;
 
-    font-size:14px;
+    background:#fff;
+
+    color:#172554;
 
     font-weight:600;
 
+    font-size:15px;
+
     cursor:pointer;
 
-    transition:.25s;
-
-}
-
-.primaryBtn{
-
-    background:#2563eb;
-
-    color:white;
-
-}
-
-.primaryBtn:hover{
-
-    background:#1d4ed8;
-
-}
-
-.secondaryBtn{
-
-    background:#eef2ff;
-
-    color:#1e3a8a;
+    transition:.3s;
 
 }
 
 .secondaryBtn:hover{
 
-    background:#dbeafe;
+    background:#f8fafc;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 24px rgba(15,23,42,.08);
 
 }
 
-/* ================= Responsive ================= */
+.primaryBtn{
 
-@media (max-width:768px){
+    padding:15px 44px;
 
-.wrapper{
+    border:none;
 
-    max-width:100%;
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+    135deg,
+    #0066ff,
+    #0066ff
+    );
+
+    box-shadow:
+    0 14px 35px rgba(255,107,0,.28);
+
+    transition:.3s;
 
 }
 
-.grid{
+.primaryBtn:hover{
 
-    grid-template-columns:1fr;
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 22px 45px rgba(255,107,0,.35);
 
 }
 
-.previewGrid{
+.primaryBtn:active{
 
-    grid-template-columns:repeat(2,1fr);
+    transform:scale(.98);
+
+}
+
+.primaryBtn:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+.imagePreviewTitle{
+
+    margin:25px 0 18px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#172554;
+
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    background:#fff2e7;
+
+    color:#0066ff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:#edf2f7;
+
+    margin:24px 0;
+
+}
+
+.helperText{
+
+    font-size:13px;
+
+    color:#94a3b8;
+
+    margin-top:6px;
+
+}
+
+.required{
+
+    color:#ef4444;
+
+    margin-left:3px;
+
+}
+
+.optional{
+
+    color:#94a3b8;
+
+    font-size:12px;
+
+    margin-left:5px;
+
+}
+
+.success{
+
+    color:#16a34a;
+
+}
+
+.warning{
+
+    color:#f59e0b;
+
+}
+
+.danger{
+
+    color:#ef4444;
+
+}
+/* ===============================
+   PREMIUM CREATE AUCTION UI
+   PART 4/4
+================================*/
+
+/* ---------- Card Animation ---------- */
+
+.card{
+    animation:fadeUp .45s ease both;
+}
+
+.card:nth-child(2){
+    animation-delay:.08s;
+}
+
+.card:nth-child(3){
+    animation-delay:.16s;
+}
+
+.card:nth-child(4){
+    animation-delay:.24s;
+}
+
+.card:nth-child(5){
+    animation-delay:.32s;
+}
+
+.card:nth-child(6){
+    animation-delay:.40s;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:none;
+
+    }
+
+}
+
+/* ---------- Smooth Transition ---------- */
+
+input,
+textarea,
+select,
+button,
+.card,
+.uploadBox,
+.imageCard,
+.dropdownBox,
+.checkboxItem{
+
+    transition:all .3s ease;
+
+}
+
+/* ---------- Input Icons Space ---------- */
+
+.inputIcon{
+
+    position:relative;
+
+}
+
+.inputIcon svg{
+
+    position:absolute;
+
+    left:16px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#94a3b8;
+
+}
+
+.inputIcon input{
+
+    padding-left:48px;
+
+}
+
+/* ---------- Upload Hint ---------- */
+
+.uploadHint{
+
+    margin-top:12px;
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+    text-align:center;
+
+}
+
+/* ---------- Preview Counter ---------- */
+
+.previewCounter{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+
+/* ---------- Tags ---------- */
+
+.tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    background:#eef6ff;
+
+    color:#2563eb;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin:5px;
+
+}
+
+/* ---------- Small Buttons ---------- */
+
+.smallBtn{
+
+    padding:8px 15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:#f8fafc;
+
+    color:#172554;
+
+    font-weight:600;
+
+}
+
+.smallBtn:hover{
+
+    background:#0066ff;
+
+    color:#fff;
+
+}
+
+/* ---------- Loading ---------- */
+
+.loading{
+
+    pointer-events:none;
+
+    opacity:.7;
+
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+    height:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+    180deg,
+    #0066ff,
+    #0066ff
+    );
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#0066ff;
+
+}
+
+/* ---------- Selection ---------- */
+
+::selection{
+
+    background:#0066ff;
+
+    color:#fff;
+
+}
+
+/* ---------- Focus Visible ---------- */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+
+    outline:none;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:1400px){
+
+.formGrid{
+
+grid-template-columns:1.3fr 1fr;
+
+}
+
+}
+
+@media(max-width:1200px){
+
+.container{
+
+padding:40px 35px 90px;
+
+}
+
+.formGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.leftColumn,
+.rightColumn{
+
+width:100%;
+
+}
+
+.checkboxGrid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:900px){
+
+.grid2{
+
+grid-template-columns:1fr;
+
+}
+
+.imageGrid{
+
+grid-template-columns:repeat(2,1fr);
 
 }
 
 .footer{
 
-    flex-direction:column;
+flex-direction:column;
+
+align-items:stretch;
 
 }
 
 .primaryBtn,
 .secondaryBtn{
 
-    width:100%;
+width:100%;
 
 }
 
 }
+
+@media(max-width:700px){
+
+.container{
+
+padding:25px 18px 80px;
+
+}
+
+.header{
+
+margin-bottom:35px;
+
+}
+
+.header h1{
+
+font-size:2.2rem;
+
+}
+
+.header p{
+
+font-size:15px;
+
+}
+
+.card{
+
+padding:22px;
+
+border-radius:20px;
+
+}
+
+.card h2{
+
+font-size:20px;
+
+}
+
+.card h2 svg{
+
+width:42px;
+
+height:42px;
+
+padding:10px;
+
+}
+
+.uploadBox{
+
+min-height:250px;
+
+}
+
+.uploadBox svg{
+
+font-size:55px;
+
+}
+
+.uploadBox h3{
+
+font-size:20px;
+
+}
+
+.checkboxGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.imageGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.footer{
+
+padding:18px;
+
+border-radius:18px;
+
+}
+
+}
+
+@media(max-width:450px){
+
+.header h1{
+
+font-size:1.8rem;
+
+}
+
+.card{
+
+padding:18px;
+
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select{
+
+padding:13px;
+
+font-size:14px;
+
+}
+
+.primaryBtn,
+.secondaryBtn{
+
+padding:14px;
+
+font-size:14px;
+
+}
+
+}
+
+/* ---------- End ---------- */
