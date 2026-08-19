@@ -1,0 +1,264 @@
+.container{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 8%;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #143cdb 0%,
+            #2563eb 45%,
+            #1d4ed8 75%,
+            #0f172a 100%
+        );
+
+    isolation:isolate;
+}
+
+/* Animated Gradient */
+
+.container::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.08),
+            transparent,
+            rgba(255,255,255,.05)
+        );
+
+    background-size:300% 300%;
+
+    animation:gradientMove 14s ease infinite;
+
+    z-index:-3;
+}
+
+/* Grid */
+
+.container::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+
+    background-size:64px 64px;
+
+    z-index:-2;
+}
+
+/* Glowing Blobs */
+
+.glow1,
+.glow2,
+.glow3{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.35;
+    animation:float 12s ease-in-out infinite;
+}
+
+.glow1{
+    width:320px;
+    height:320px;
+    background:#60a5fa;
+
+    top:-120px;
+    left:-120px;
+}
+
+.glow2{
+    width:260px;
+    height:260px;
+    background:#7c3aed;
+
+    bottom:-90px;
+    right:15%;
+
+    animation-delay:3s;
+}
+
+.glow3{
+    width:220px;
+    height:220px;
+    background:#38bdf8;
+
+    top:45%;
+    left:42%;
+
+    animation-delay:6s;
+}
+
+/* Banner */
+
+.left{
+    width:48%;
+    position:relative;
+    z-index:2;
+}
+
+/* Login Card */
+
+.right{
+    width:42%;
+
+    display:flex;
+    justify-content:flex-end;
+
+    position:relative;
+    z-index:2;
+}
+
+/* Animations */
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0) translateX(0);
+    }
+
+    50%{
+        transform:translateY(-25px) translateX(20px);
+    }
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:1000px){
+
+.container{
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    padding:40px 20px;
+
+}
+
+.left{
+
+    width:100%;
+
+    margin-bottom:40px;
+
+}
+
+.right{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.left{
+
+    display:none;
+
+}
+
+.right{
+
+    width:100%;
+
+}
+
+}
+
+/* ==========================
+   Floating Particles
+========================== */
+
+.particles{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.particle{
+
+    position:absolute;
+
+    bottom:-20px;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.7);
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.8);
+
+    animation:particleUp linear infinite;
+}
+
+@keyframes particleUp{
+
+    from{
+
+        transform:
+            translateY(0)
+            scale(.6);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    85%{
+        opacity:.5;
+    }
+
+    to{
+
+        transform:
+            translateY(-120vh)
+            scale(1.4);
+
+        opacity:0;
+    }
+
+}

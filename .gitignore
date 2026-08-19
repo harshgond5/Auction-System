@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build folders
+dist/
+build/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Streamlit secrets
+ai/.streamlit/secrets.toml
+
+#firebase
+src/config/firebase-service-account.json
+
+# Environment files
+.env
+.env.*
+
+server/src/config/firebase-service-account.json
+firebase-service-account.json
