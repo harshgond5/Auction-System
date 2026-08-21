@@ -18,7 +18,6 @@ export default function AuthBanner() {
       {/* Logo */}
       <div className={styles.logo}>
         <div className={styles.logoBox}></div>
-
         <span>AuctionHub</span>
       </div>
 
@@ -59,19 +58,56 @@ export default function AuthBanner() {
         </div>
       </div>
 
-      {/* Floating Card */}
-      <div className={styles.card}>
-        <div className={styles.avatar}>R</div>
+      {/* Floating Review Cards Showcase */}
+      <div className={styles.cardContainer}>
+        {/* Review 1 */}
+        <div className={styles.card}>
+          <div className={styles.avatar}>H</div>
+          <div>
+            <h3>Harsh</h3>
+            <span>Lead Platform Architects</span>
+            <p>
+              “AuctionHub provides the smoothest real-time bidding experience
+              I've ever built and used.”
+            </p>
+          </div>
+        </div>
 
-        <div>
-          <h3>HK & Team </h3>
+        {/* Review 2 */}
+        <div className={styles.card}>
+          <div className={styles.avatar}>A</div>
+          <div>
+            <h3>Huda</h3>
+            <span>Frequent Collector</span>
+            <p>
+              “The live bid security and instant updates give me complete
+              peace of mind during high-stakes auctions.”
+            </p>
+          </div>
+        </div>
 
-          <span>Professional Collector</span>
-
-          <p>
-            “AuctionHub provides the smoothest real-time bidding experience
-            I've ever used.”
-          </p>
+        {/* Review 3 */}
+        <div className={styles.card}>
+          <div className={styles.avatar}>P</div>
+          <div>
+            <h3>Himanshu</h3>
+            <span>Verified Seller</span>
+            <p>
+              “Listing high-value items has never been easier. The KYC and AI
+              fraud detection keep everything safe.”
+            </p>
+          </div>
+        </div>
+        <div className={styles.card}>
+          <div className={styles.avatar}>P</div>
+          <div>
+            <h3>HK & team</h3>
+            <span>Verified Seller</span>
+            <p>
+              “Listing high-value items has never been easier. The KYC and AI
+              fraud detection keep everything safe.”
+            </p>
+          </div>
         </div>
       </div>
     </div>
