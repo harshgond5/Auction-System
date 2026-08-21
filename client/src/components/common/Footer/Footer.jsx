@@ -35,8 +35,8 @@ export default function Footer() {
         <div>
           <h3>Contact</h3>
 
-          <p>support@auctionhub.com</p>
-          <p>+91 98765 43210</p>
+          <p>harshkrgond@gmail.com</p>
+          <p>+91 9532662020</p>
           <p>India</p>
         </div>
 

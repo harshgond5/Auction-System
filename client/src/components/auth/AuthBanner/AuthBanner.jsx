@@ -64,7 +64,7 @@ export default function AuthBanner() {
         <div className={styles.avatar}>R</div>
 
         <div>
-          <h3>Rahul Sharma</h3>
+          <h3>HK & Team </h3>
 
           <span>Professional Collector</span>
 
