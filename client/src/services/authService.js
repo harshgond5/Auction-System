@@ -67,52 +67,38 @@ export const loginWithGoogle = async () => {
 };
 
 export const syncUser = async(userData)=>{
-
     try{
-
         const user = auth.currentUser;
-
         if(!user){
             throw new Error("No Firebase user found");
         }
 
-
         const token = await user.getIdToken();
-
+        
+        // Use the environment variable, falling back to local for development
+        const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
         const response = await fetch(
-            "http://localhost:5000/api/users/sync",
+            `${API_URL}/users/sync`,
             {
                 method:"POST",
-
                 headers:{
                     "Content-Type":"application/json",
-
                     Authorization:`Bearer ${token}`
                 },
-
-
                 body:JSON.stringify(userData)
             }
         );
 
-
         const data = await response.json();
-
-
         return data;
 
-
-    }
-    catch(error){
-
+    } catch(error){
         return {
             success:false,
             message:error.message
         };
-
     }
-
 };
 
 // Logout

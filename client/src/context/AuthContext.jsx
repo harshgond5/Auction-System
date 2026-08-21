@@ -82,14 +82,12 @@ async function login(email, password) {
 
         const firebaseUser = await loginWithEmail(email, password);
 
-        console.log("2️⃣ FIREBASE LOGIN SUCCESS:", firebaseUser.email);
-
         const token = await firebaseUser.getIdToken();
-        console.log("👉 COPY_MY_TOKEN:", token);
+        
 
         setFirebaseUser(firebaseUser);
 
-        console.log("3️⃣ SYNCING MONGODB USER");
+       
 
         const syncResult = await syncUser({
             name: firebaseUser.displayName || "",
@@ -97,13 +95,11 @@ async function login(email, password) {
             accountType: "user"
         });
 
-        console.log("4️⃣ MONGODB SYNC RESULT:", syncResult);
-
-        console.log("5️⃣ GETTING PROFILE");
+       
 
         const mongoProfile = await getProfile();
 
-        console.log("6️⃣ PROFILE SUCCESS:", mongoProfile);
+       
 
         setProfile(mongoProfile.data);
 
