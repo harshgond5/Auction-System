@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   FiShield,
   FiZap,
@@ -7,7 +8,51 @@ import {
 
 import styles from "./AuthBanner.module.css";
 
+// We put the reviews in an array to easily rotate them
+const reviews = [
+  {
+    avatar: "H",
+    name: "Harsh",
+    title: "Lead Platform Architects",
+    text: "“AuctionHub provides the smoothest real-time bidding experience I've ever built and used.”",
+  },
+  {
+    avatar: "H",
+    name: "Huda",
+    title: "Frequent Collector",
+    text: "“The live bid security and instant updates give me complete peace of mind during high-stakes auctions.”",
+  },
+  {
+    avatar: "H",
+    name: "Himanshu",
+    title: "Verified Seller",
+    text: "“Listing high-value items has never been easier. The KYC and AI fraud detection keep everything safe.”",
+  },
+  {
+    avatar: "HK",
+    name: "HK & team",
+    title: "Verified Seller",
+    text: "“Listing high-value items has never been easier. The KYC and AI fraud detection keep everything safe.”",
+  },
+];
+
 export default function AuthBanner() {
+  // Initialize state with a random review index on refresh
+  const [currentIndex, setCurrentIndex] = useState(() => 
+    Math.floor(Math.random() * reviews.length)
+  );
+
+  // Set up the 20-second rotation timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+    }, 20000); // 20000ms = 20 seconds
+
+    return () => clearInterval(timer); // Cleanup timer on unmount
+  }, []);
+
+  const activeReview = reviews[currentIndex];
+
   return (
     <div className={styles.banner}>
       {/* Background */}
@@ -36,58 +81,25 @@ export default function AuthBanner() {
       </div>
 
       {/* Feature Pills */}
-     {/* Feature Pills */}
       <div className={styles.pills}>
         <div><FiShield /> KYC Verified</div>
         <div><FiZap /> AI Detection</div>
         <div><FiClock /> Live Auctions</div>
         <div><FiCheckCircle /> Instant Updates</div>
       </div>
-
-      {/* MAKE SURE THIS WRAPPER IS HERE */}
+     <div></div>
+      {/* Rotating Review Card Wrapper */}
       <div className={styles.cardContainer}>
-        
-        {/* Review 1 */}
-        <div className={styles.card}>
-          <div className={styles.avatar}>H</div>
+        {/* We use a key based on the index to force the fade-in animation to replay when it changes */}
+        <div key={currentIndex} className={styles.card}>
+          <div className={styles.avatar}>{activeReview.avatar}</div>
           <div>
-            <h3>Harsh</h3>
-            <span>Lead Platform Architects</span>
-            <p>“AuctionHub provides the smoothest real-time bidding experience I've ever built and used.”</p>
+            <h3>{activeReview.name}</h3>
+            <span>{activeReview.title}</span>
+            <p>{activeReview.text}</p>
           </div>
         </div>
-
-        {/* Review 2 */}
-        <div className={styles.card}>
-          <div className={styles.avatar}>A</div>
-          <div>
-            <h3>Huda</h3>
-            <span>Frequent Collector</span>
-            <p>“The live bid security and instant updates give me complete peace of mind during high-stakes auctions.”</p>
-          </div>
-        </div>
-
-        {/* Review 3 */}
-        <div className={styles.card}>
-          <div className={styles.avatar}>P</div>
-          <div>
-            <h3>Himanshu</h3>
-            <span>Verified Seller</span>
-            <p>“Listing high-value items has never been easier. The KYC and AI fraud detection keep everything safe.”</p>
-          </div>
-        </div>
-
-        {/* Review 4 */}
-        <div className={styles.card}>
-          <div className={styles.avatar}>H</div>
-          <div>
-            <h3>HK & team</h3>
-            <span>Verified Seller</span>
-            <p>“Listing high-value items has never been easier. The KYC and AI fraud detection keep everything safe.”</p>
-          </div>
-        </div>
-
-      </div> 
+      </div>
     </div>
   );
 }
