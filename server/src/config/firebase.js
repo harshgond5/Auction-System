@@ -1,25 +1,19 @@
 const admin = require('firebase-admin');
+const fs = require('fs');
 
-if (!admin.apps.length) {
-  try {
-    if (process.env.FIREBASE_PROJECT_ID && process.env.FIREBASE_CLIENT_EMAIL && process.env.FIREBASE_PRIVATE_KEY) {
-      // Preferred for production: credentials supplied via env vars
-      admin.initializeApp({
-        credential: admin.credential.cert({
-          projectId: process.env.FIREBASE_PROJECT_ID,
-          clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-          privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-        }),
-      });
-    } else {
-      // Local dev fallback: use the checked-in service account key
-      const serviceAccount = require('./firebase-service-account.json');
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-      });
-    }
-  } catch (error) {
-    console.warn('Firebase Admin init warning:', error.message);
-  }
-}
+// Automatically check if the app is live on Render or running locally
+const renderSecretPath = '/etc/secrets/firebase-service-account.json';
+const localSecretPath = './firebase-service-account.json'; // or '../firebase-service-account.json' depending on your exact folder structure
+
+// Use the Render vault if it exists, otherwise use your local file
+const serviceAccountPath = fs.existsSync(renderSecretPath) 
+  ? renderSecretPath 
+  : localSecretPath;
+
+const serviceAccount = require(serviceAccountPath);
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 module.exports = admin;
